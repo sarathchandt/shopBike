@@ -1,56 +1,55 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-
-const TabBar = ({ state, descriptors, navigation }:any) => {
+import { View } from "react-native";
+import tw from "~/lib/tailwind";
+import TabBarItem from "./TabBarItem";
+import BottomRectangle from "~/../assets/svgIcons/BottomNavIcons/Rectangle 24.svg";
+const TabBar = ({ state, descriptors, navigation }: any) => {
   return (
-    <View style={{ flexDirection: "row" }}>
-      {state.routes.map((route:any, index:number) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+    <View style={tw`  absolute bottom-0 w-full`}>
+      <View style={tw`relative `}>
+        <View style={tw` w-full  z-2 `}>
+          <View style={tw`relative`}>
+            <View
+              style={[
+                tw`bg-blue-200 h-full w-full -bottom-3 absolute`,
+                { transform: [{ rotate: "-2.7deg" }] },
+              ]}
+            ></View>
+            <BottomRectangle width={"100%"} preserveAspectRatio="none" />
+          </View>
+        </View>
+        <View style={tw`absolute top-0 w-full  z-3`}>
+          <View style={tw`flex-row justify-between  px-[17px] pt-[30px]`}>
+            {state.routes.map((route: any, index: number) => {
+              const { options } = descriptors[route.key];
+              const Icon = options.tabBarIcon;
+              const isFocused = state.index === index;
 
-        const isFocused = state.index === index;
+              const onPress = () => {
+                return;
+                const event = navigation.emit({
+                  type: "tabPress",
+                  target: route.key,
+                  canPreventDefault: true,
+                });
 
-        const onPress = () => {
-          const event = navigation.emit({
-            type: "tabPress",
-            target: route.key,
-            canPreventDefault: true,
-          });
+                if (!isFocused && !event.defaultPrevented) {
+                  navigation.navigate(route.name, route.params);
+                }
+              };
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: "tabLongPress",
-            target: route.key,
-          });
-        };
-
-        return (
-          <TouchableOpacity
-            key={index}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{ flex: 1 }}
-          >
-            <Text style={{ color: isFocused ? "#673ab7" : "#222" }}>
-              {label}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
+              return (
+                <TabBarItem
+                  key={index}
+                  onPress={onPress}
+                  isFocused={isFocused}
+                  Icon={Icon}
+                />
+              );
+            })}
+          </View>
+        </View>
+      </View>
     </View>
   );
 };

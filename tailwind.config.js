@@ -1,19 +1,20 @@
 module.exports = {
-  theme: {
-    screens: {
-      sm: "380px",
-      md: "420px",
-      lg: "680px",
-      tablet: "1024px",
-    },
-    extend: {
-      colors: {
-        primary: "#FF6363",
-        secondary: {
-          100: "#E2E2D5",
-          200: "#888883",
-        },
+    theme: {
+      screens: {
+        sm: '380px',
+        md: '420px',
+        lg: '680px',
+        tablet: '1024px',
       },
+      extend: {
+        colors: {
+          blue:{
+            100:"#242C3A",
+            200:"#36416C",
+          },
+        }
+      }
     },
-  },
-};
+    
+  };
+  
