@@ -24,7 +24,7 @@ export default function App() {
 
 
   return (
-    <SafeAreaView  style={tw`flex-1 `}>
+    <SafeAreaView  style={tw`flex-1 bg-blue-100 `}>
       <NavigationContainer>
         <RootNav />
       </NavigationContainer>

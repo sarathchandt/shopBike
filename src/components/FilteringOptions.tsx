@@ -55,7 +55,7 @@ const FilteringOptions = () => {
   return (
     <View
       style={[
-        tw`w-full  flex-row justify-between px-4`,
+        tw`w-full  flex-row justify-between pb-8   px-4`,
         { transform: [{ rotate: "-8deg" }] },
       ]}
     >

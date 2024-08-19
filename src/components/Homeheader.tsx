@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Dimensions, Text, View } from "react-native";
 import tw from "~/lib/tailwind";
 import SearchIcon from "~/../assets/svgIcons/BottomNavIcons/Search.svg";
 import BlueGradientButton from "./GradientButton";
+const WINDOW_WIDTH =  Dimensions.get('window').width
 
 const Homeheader = ({ Icon }: any) => {
   return (
@@ -11,7 +12,7 @@ const Homeheader = ({ Icon }: any) => {
         <Text style={tw`text-white font-bold text-xl my-auto`}>
           Choose Your Bike
         </Text>
-        <BlueGradientButton Icon={SearchIcon} />
+        <BlueGradientButton width={WINDOW_WIDTH/20} height={WINDOW_WIDTH/20} Icon={SearchIcon} />
       </View>
 
     </View>

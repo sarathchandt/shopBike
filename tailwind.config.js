@@ -14,7 +14,7 @@ module.exports = {
           },
           textWhite:{
             100:"#A8AAB0",
-          
+            200:"#A7AAB1",
           }
         }
       }
