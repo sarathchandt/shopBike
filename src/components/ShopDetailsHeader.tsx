@@ -5,25 +5,34 @@ import BackIcon from "~/../assets/svgIcons/ShopDetails/BackButton.svg";
 import GradientButton from "./GradientButton";
 
 type ShopDetailsHeaderProps = {
-  navigation: any;
+  onpress: any;
   title: string;
+  isBottomSheetOpen: boolean;
 };
 const WINDOW_WIDTH = Dimensions.get("window").width;
 
-const ShopDetailsHeader = ({ navigation, title }: ShopDetailsHeaderProps) => {
+const ShopDetailsHeader = ({ onpress, title,isBottomSheetOpen }: ShopDetailsHeaderProps) => {
   return (
     <View style={tw`flex-row `}>
       <TouchableOpacity
         style={tw`w-3/12 flex-row `}
-        onPress={navigation.goBack}
+        onPress={onpress}
       >
-        <View>
+       {isBottomSheetOpen ? <View style={{transform:[{rotate:"-90deg"}]}} >
           <GradientButton
             width={WINDOW_WIDTH / 20}
             height={WINDOW_WIDTH / 20}
             Icon={BackIcon}
           />
-        </View>
+        </View>:
+        <View  >
+        <GradientButton
+          width={WINDOW_WIDTH / 20}
+          height={WINDOW_WIDTH / 20}
+          Icon={BackIcon}
+        />
+      </View>
+        }
       </TouchableOpacity>
       <View style={tw`w-6/12`}>
         <Text style={tw`font-bold text-xl text-textWhite-100 mx-auto my-auto`}>

@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Dimensions, useWindowDimensions, View } from "react-native";
+import { Dimensions, View } from "react-native";
 import tw from "~/lib/tailwind";
 
 const WINDOW_WIDTH =  Dimensions.get('window').width

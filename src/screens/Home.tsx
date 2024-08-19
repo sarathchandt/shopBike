@@ -21,7 +21,7 @@ const Home = ({ navigation }: any) => {
       </View>
       <Homeheader />
       <View style={tw`flex-1  `}>
-        <ScrollView showsHorizontalScrollIndicator={false} style={tw``}>
+        <ScrollView showsVerticalScrollIndicator={false} style={tw``}>
           <OfferWithGlassEffect BikeIcon={OfferBike} offerPercent={30} />
           <FilteringOptions />
           <ShopItemMap navigation={navigation} />
