@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { Dimensions, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { BackHandler, Dimensions, View } from "react-native";
 import ShopDetailsHeader from "~/components/ShopDetailsHeader";
 import tw from "~/lib/tailwind";
 import Triangle from "~/../assets/svgIcons/HomeIcons/BackGroundRectangle.svg";
@@ -13,6 +13,7 @@ const SingleItemScreen = ({
   const [isBottomSheetOpen, setIsBottomSheetOpen] = React.useState(false);
   const childRef = useRef<any>(null);
 
+  // function to handle the back press and close the bottom sheet
   const onpressFunction = () => {
     if (isBottomSheetOpen) {
       childRef && childRef.current.closeTheBottomSheet();
@@ -21,6 +22,25 @@ const SingleItemScreen = ({
       navigation.goBack();
     }
   };
+
+  useEffect(() => {
+    const backAction = () => {
+      if (isBottomSheetOpen) {
+        childRef && childRef.current.closeTheBottomSheet();
+        setIsBottomSheetOpen(false);
+        return true;
+      }
+      return false;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, [isBottomSheetOpen]);
+
   return (
     <View style={tw`flex-1 bg-blue-100 pt-4 relative`}>
       <Animated.View
@@ -38,7 +58,10 @@ const SingleItemScreen = ({
       </View>
       <View style={tw`flex-1`}>
         <BikeSlidingAnimation
-          nav={navigation}
+          nav={() => {
+            onpressFunction();
+            navigation.push("shopingCartScreen");
+          }}
           ref={childRef}
           setIsBottomSheetOpen={setIsBottomSheetOpen}
         />

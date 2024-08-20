@@ -18,7 +18,8 @@ import type {
   export type RootStackParamList = {
     Tab: NavigatorScreenParams<BottomTabParamList>;
     singleItemScreen:undefined
-    shopingCartScreen: undefined
+    shopingCartScreen: undefined;
+    checkotScreen:undefined;
   };
 
   export type RootStackScreenProps<T extends keyof RootStackParamList> =

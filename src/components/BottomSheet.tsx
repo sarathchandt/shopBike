@@ -40,9 +40,11 @@ const BottomSheet = ({ onPress,nav }: BottomSheetProps) => {
     onPress();
   };
 
+  
+
   return (
     <Animated.View
-      style={[tw` h-[${WINDOW_HEIGHT / 1.7}px]  w-full`, animatedStyles]}
+      style={[tw` h-[${WINDOW_HEIGHT* 60 /100}px]  w-full`, animatedStyles]}
     >
       
       <GradientView
@@ -115,7 +117,7 @@ const BottomSheet = ({ onPress,nav }: BottomSheetProps) => {
                 <Text style={tw`my-auto  text-blue-50 text-2xl`}>
                   $ 1,999.99
                 </Text>
-                <TouchableOpacity style={tw`my-auto`} onPress={()=>{nav.navigate('shopingCartScreen')}} >
+                <TouchableOpacity style={tw`my-auto`} onPress={nav} >
                   <GradientView
                     primaryColorArray={["#51E3F5", "#2b3141", "#232AE8"]}
                     secondaryColorArray={["#34BFE9", "#408FED", "#4863F0"]}

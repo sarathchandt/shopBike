@@ -46,8 +46,6 @@ const TextComponent = ({
   </View>
 );
 
-
-
 const icons = [Bike_1, Helmet, Bike_2];
 const ShopingCartScreen = ({
   navigation,
@@ -64,7 +62,7 @@ const ShopingCartScreen = ({
 
   useEffect(() => {
     let total = 0;
-    tempShopItemList.slice(0, 3).forEach((item) => {
+    tempShopItemList.forEach((item) => {
       total = total + item.price;
     });
     setTotalPrice(total);
@@ -96,7 +94,7 @@ const ShopingCartScreen = ({
       </View>
       <View style={tw`flex-1 `}>
         <ScrollView showsVerticalScrollIndicator={false} style={tw``}>
-          {[...tempShopItemList].slice(0, 3).map((item, index) => {
+          {[...tempShopItemList].map((item, index) => {
             return (
               <CartSingleItem
                 increaseTheTotalPrice={increaseTheTotalPrice}
@@ -114,7 +112,7 @@ const ShopingCartScreen = ({
       <TextInputComponent onApplyPress={onApplyDiscount} />
       <View style={tw`h-4/10 px-4 pb-4 `}>
         <View style={tw`flex-1`}>
-          <Text style={tw`text-textWhite-100 text-center text-base mt-auto `}>
+          <Text style={tw`text-textWhite-100 text-center text-base  `}>
             Your bag qualifies for free shipping
           </Text>
           <TextComponent subTotal="Subtotal:" price={totalPrice.toFixed(2)} />
@@ -129,9 +127,16 @@ const ShopingCartScreen = ({
             price={totalValueCalculation()}
             textStyle="text-xl font-bold text-blue-50"
           />
-          <View>
-            <BottomSwipeComponent/>
-          </View>
+        </View>
+        <View>
+          <BottomSwipeComponent
+            onEndCall={() => {
+              const timer = setTimeout(() => {
+                navigation.replace("checkotScreen");
+                clearTimeout(timer);
+              }, 400);
+            }}
+          />
         </View>
       </View>
     </View>
