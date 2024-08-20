@@ -3,31 +3,19 @@ import { SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNav from "~/navigators/RootNav";
 import * as SplashScreen from "expo-splash-screen";
-import { useDeviceContext } from 'twrnc';
+import { useDeviceContext } from "twrnc";
 import tw from "~/lib/tailwind";
 
-SplashScreen.preventAutoHideAsync();
-
+import CustomeStatusBar from "./src/components/CustomeStatusBar";
 
 export default function App() {
-
-  useDeviceContext(tw); 
-
-
-  useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hideAsync();
-    }, 1000);
-  }, []);
- 
-
-
+  useDeviceContext(tw);
 
   return (
-    <SafeAreaView  style={tw`flex-1 bg-blue-100 `}>
+    <CustomeStatusBar>
       <NavigationContainer>
         <RootNav />
       </NavigationContainer>
-    </SafeAreaView>
+    </CustomeStatusBar>
   );
 }

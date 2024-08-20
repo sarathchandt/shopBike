@@ -7,7 +7,7 @@ const WINDOW_WIDTH =  Dimensions.get('window').width
 
 const Homeheader = ({ Icon }: any) => {
   return (
-    <View style={tw` pt-10 `}>
+    <View style={tw` pt-4 `}>
       <View style={tw`flex-row justify-between px-4`}>
         <Text style={tw`text-white font-bold text-xl my-auto`}>
           Choose Your Bike

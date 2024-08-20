@@ -13,13 +13,15 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+
 const WINDOW_HEIGHT = Dimensions.get("window").height;
 
 type BottomSheetProps = {
   onPress: () => void;
+  nav:any
 };
 
-const BottomSheet = ({ onPress }: BottomSheetProps) => {
+const BottomSheet = ({ onPress,nav }: BottomSheetProps) => {
   const translateY = useSharedValue<number>(WINDOW_HEIGHT);
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [
@@ -42,6 +44,7 @@ const BottomSheet = ({ onPress }: BottomSheetProps) => {
     <Animated.View
       style={[tw` h-[${WINDOW_HEIGHT / 1.7}px]  w-full`, animatedStyles]}
     >
+      
       <GradientView
         primaryColorArray={["#4d5362", "#2b3141", "#1b202a"]}
         secondaryColorArray={["#353e53", "#252a39", "#242c3b"]}
@@ -52,14 +55,33 @@ const BottomSheet = ({ onPress }: BottomSheetProps) => {
             <View style={tw`my-auto`}>
               <View style={tw`flex-row justify-center gap-8 `}>
                 <TouchableOpacity
-                  style={tw` px-6 py-3  bg-blue-200 rounded-7px`}
+                  style={[
+                    tw` px-8 py-4  bg-blue-200 rounded-7px`,
+                    {
+                      shadowOffset: { width: 0, height: 2 },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 3.84,
+                      elevation: 5,
+                    },
+                  ]}
                   onPress={onPressHandler}
                 >
                   <Text style={tw`text-textWhite-100`}>Description</Text>
                 </TouchableOpacity>
-                <View style={tw` px-6 py-3 bg-blue-200 rounded-7px`}>
+                <TouchableOpacity
+                  style={[
+                    tw` px-8 py-4  bg-blue-200 rounded-7px`,
+                    {
+                      shadowOffset: { width: 0, height: 2 },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 3.84,
+                      elevation: 5,
+                    },
+                  ]}
+                >
                   <Text style={tw`text-textWhite-100`}>Specification</Text>
-                </View>
+                </TouchableOpacity>
+               
               </View>
             </View>
           </View>
@@ -80,7 +102,7 @@ const BottomSheet = ({ onPress }: BottomSheetProps) => {
           </View>
           <View style={[tw` mb-6 mt-auto w-full `]}>
             <GradientView
-              primaryColorArray={["#4d5362", "#3770EA", "#1b202a"]}
+              primaryColorArray={["#4d5362", "#2d3749", "#2C3749"]}
               secondaryColorArray={["#272e3c", "#242c3b", "#242a3b"]}
               roundeness="t-[30px]"
             >
@@ -93,14 +115,14 @@ const BottomSheet = ({ onPress }: BottomSheetProps) => {
                 <Text style={tw`my-auto  text-blue-50 text-2xl`}>
                   $ 1,999.99
                 </Text>
-                <View style={tw`my-auto`}>
+                <TouchableOpacity style={tw`my-auto`} onPress={()=>{nav.navigate('shopingCartScreen')}} >
                   <GradientView
                     primaryColorArray={["#51E3F5", "#2b3141", "#232AE8"]}
                     secondaryColorArray={["#34BFE9", "#408FED", "#4863F0"]}
                   >
                     <Text style={tw`text-white px-10 py-3 `}>Add to Cart</Text>
                   </GradientView>
-                </View>
+                </TouchableOpacity>
               </View>
             </GradientView>
           </View>

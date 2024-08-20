@@ -12,9 +12,10 @@ import MapIcon from "~/../assets/svgIcons/BottomNavIcons/Map.svg";
 import CartIcon from "~/../assets/svgIcons/BottomNavIcons/Cart.svg";
 import ProfileIcon from "~/../assets/svgIcons/BottomNavIcons/Person.svg";
 import DocsIcon from "~/../assets/svgIcons/BottomNavIcons/Doc.svg";
+import { BottomTabParamList } from "~/lib/types";
 
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const BottomNav = () => {
   return (

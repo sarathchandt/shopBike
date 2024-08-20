@@ -7,8 +7,9 @@ import OfferBike from "~/../assets/svgIcons/HomeIcons/OfferBike.svg";
 import BackGroundRect from "~/../assets/svgIcons/HomeIcons/RectangleBg.svg";
 import FilteringOptions from "~/components/FilteringOptions";
 import ShopItemMap from "~/components/ShopItemMap";
+import { BottomScreenProps } from "~/lib/types";
 
-const Home = ({ navigation }: any) => {
+const Home = ({ navigation }: BottomScreenProps<'Home'>) => {
   const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = useWindowDimensions();
   return (
     <View style={tw`flex-1 bg-blue-100 relative`}>

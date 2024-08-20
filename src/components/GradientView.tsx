@@ -26,8 +26,8 @@ const GradientView: React.FC<PropsWithChildren<GradientViewProps>> = ({
         <LinearGradient
           style={tw` rounded-${roundeness} overflow-hidden`}
           colors={secondaryColorArray}
-          start={{ x: 0.7, y: 0 }}
-          end={{ x: 0.8, y: 1 }}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
         >
             {children}
         </LinearGradient>
